@@ -128,3 +128,4 @@ CONSTRAINT fk_num_action FOREIGN KEY (num_action) REFERENCES tbl_action(num_acti
 --drop database db_library;
 --USE db_library;
 --SHOW TABLES;
+--SELECT * FROM tbl_access;

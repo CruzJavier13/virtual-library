@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="container-login">
+        <div class="login">
+            <h1>Login</h1>
+            {% for user in users %}
+                <p>Id: {{ user.num_user }}</p>
+                <p>User card: {{ user.user_card }}</p>
+                <!-- Otros campos según tu modelo TblUser -->
+                <hr>
+            {% endfor %}
+            <form action="home" method="post">
+                <div class="username">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Write your user name">
+                </div>
+                <div class="password">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Write your password">
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
