@@ -1,3 +1,197 @@
+{% load static %}
 {% include 'partials/header.html' %}
-<h1>Home</h1>
+<nav class="navigation">
+  <ul>
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <spam class="icon">
+          <ion-icon name="home-outline"></ion-icon>
+        </spam>
+        <span class="title">Virtual Library</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon"> 
+          <ion-icon name="people-outline"> 
+        </ion-icon></span>
+        <span class="title">Users</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="book-outline"></ion-icon>
+        </span>
+        <span class="title">Book</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="pencil-outline"></ion-icon>
+        </span>
+        <span class="title">Author</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 2-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="book-outline">
+            <ion-icon name="cloud-download-outline"></ion-icon>
+          </ion-icon>
+        </span>
+        <span class="title">Booking</span>
+      </a>
+    </li>
+    <!--nav 1-->
+    <!--nav 2-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="list-outline"></ion-icon>
+        </span>
+        <span class="title">Category</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="create-outline"></ion-icon>
+        </span>
+        <span class="title">Editorial</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="cloud-download-outline"></ion-icon>
+        </span>
+        <span class="title">Loan</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="settings-outline"></ion-icon>
+        </span>
+        <span class="title">Setting</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </span>
+        <span class="title">Password</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </span>
+        <span class="title">SigOut</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+    <li>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name="help-outline"></ion-icon>
+        </span>
+        <span class="title">Help</span>
+      </a>
+    </li>
+    <!--nav 2-->
+    <!--nav 1-->
+  </ul>
+</nav>
+
+<div class="main">
+  <div class="topbar">
+    <div class="toggle">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="search">
+      <label for="">
+        <input type="text" placeholder="search">
+        <ion-icon name="search-outline"></ion-icon>
+      </label>
+    </div>
+    <div class="user">
+      <img src="{% static 'images/users/username-icon.svg'%}" alt="">
+    </div>
+  </div>
+  <div class="cardBox">
+    <div class="card">
+      <div>
+        <div class="cardName">Books</div>
+        <div class="iconBox"></div>
+        <div class="number">150</div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div>
+        <div class="cardName">Gender</div>
+        <div class="iconBox"></div>
+        <div class="number">150</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <div class="cardName">Readers</div>
+        <div class="iconBox"></div>
+        <div class="number">150</div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div>
+        <div class="cardName">Reviews</div>
+        <div class="iconBox"></div>
+        <div class="number">150</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews">
+    <div class="recentReviews">
+      <div class="cardHeader">
+        <h2>Review</h2>
+        <a href="#">Reviews all</a>
+      </div>
+      <table>
+        <thead>
+          <tr>Users</tr>
+          <tr>Book</tr>
+          <tr>Reviews</tr>
+          <tr>Score</tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
 {% include 'partials/footer.html' %}
