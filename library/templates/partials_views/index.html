@@ -1,0 +1,80 @@
+{% extends 'home.html' %}
+{% block title %} Home {% endblock %}
+
+{% block details_content %}
+<div class="lastScore">
+  <div class="cardHeader">
+    <h2>Last score</h2>
+    <a href="#" class="btn">View All</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <td>User</td>
+        <td>Book</td>
+        <td>Review</td>
+        <td>Score</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Alfredo Castro</td>
+        <td>El Principito</td>
+        <td>El libro me gusto</td>
+        <td><span class="score">7</span></td>
+      </tr>
+
+      <tr>
+        <td>Julio Melendez</td>
+        <td>Programando con C#</td>
+        <td>El libro es complicado de entender a la primera</td>
+        <td><span class="score">6</span></td>
+      </tr>
+
+      <tr>
+        <td>Rosa Melano</td>
+        <td>La bella y la bestia</td>
+        <td>Este libro enseña una gran lección</td>
+        <td><span class="score">4</span></td>
+      </tr>
+
+      <tr>
+        <td>Alberto Santa Rosa</td>
+        <td>El Grillete de Elefante</td>
+        <td>El libro motiva mucho a esforzarse</td>
+        <td><span class="score">10</span></td>
+      </tr>
+
+      <tr>
+        <td>Carlos Mairena</td>
+        <td>Calculo Diferencial 3ra Ed</td>
+        <td>El libro esta bueno pero no le entiendo</td>
+        <td><span class="score">8</span></td>
+      </tr>
+
+      <tr>
+        <td>Estacy Alarcon</td>
+        <td>Algebra Valdor</td>
+        <td>El libro es facil de entender</td>
+        <td><span class="score">5</span></td>
+      </tr>
+
+      <tr>
+        <td>Marlon Salgado</td>
+        <td>El rey leon</td>
+        <td>Es una historia muy trajica</td>
+        <td><span class="score">9</span></td>
+      </tr>
+
+      <tr>
+        <td>Dionisio Matamoro</td>
+        <td>El arte de la guerra</td>
+        <td>Recomiendo este libro para emprendedores</td>
+        <td><span class="score">10</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

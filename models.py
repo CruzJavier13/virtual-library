@@ -36,17 +36,17 @@ class TblAuth(models.Model):
         db_table = 'tbl_auth'
 
 
-class TblAuthLogin(models.Model):
+class TblAuthUser(models.Model):
     num_login = models.AutoField(primary_key=True)
     num_user = models.OneToOneField('TblUser', models.DO_NOTHING, db_column='num_user')
     name_user = models.CharField(max_length=16)
     password_user = models.CharField(max_length=255)
-    date_login = models.DateField()
+    date_login = models.DateField(blank=True, null=True)
     last_date_login = models.DateField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'tbl_auth_login'
+        db_table = 'tbl_auth_user'
 
 
 class TblAuthor(models.Model):
@@ -60,6 +60,18 @@ class TblAuthor(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_author'
+
+
+class TblAvailability(models.Model):
+    num_availability = models.AutoField(primary_key=True)
+    num_book = models.ForeignKey('TblBook', models.DO_NOTHING, db_column='num_book')
+    amount = models.IntegerField()
+    num_access = models.ForeignKey(TblAccess, models.DO_NOTHING, db_column='num_access')
+    availability = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tbl_availability'
 
 
 class TblBook(models.Model):
@@ -166,7 +178,7 @@ class TblRol(models.Model):
 
 class TblUser(models.Model):
     num_user = models.AutoField(primary_key=True)
-    user_card = models.CharField(unique=True, max_length=12)
+    user_card = models.CharField(unique=True, max_length=16)
     first_name = models.CharField(max_length=80)
     last_name = models.CharField(max_length=80)
     address_user = models.CharField(max_length=255)

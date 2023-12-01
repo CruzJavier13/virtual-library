@@ -1,11 +1,205 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
     <div class="container">
+      <nav class="navigation">
+        <ul>
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'home' %}">
+              <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </span>
+              <span class="title">Virtual Library</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'user' %}">
+              <span class="icon">
+                <ion-icon name="people-outline"> </ion-icon
+              ></span>
+              <span class="title">Users</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'book' %}">
+              <span class="icon">
+                <ion-icon name="book-outline"></ion-icon>
+              </span>
+              <span class="title">Book</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'author' %}">
+              <span class="icon">
+                <ion-icon name="pencil-outline"></ion-icon>
+              </span>
+              <span class="title">Author</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 2-->
+          <li>
+            <a href="{% url 'booking' %}">
+              <span class="icon">
+                <ion-icon name="book-outline">
+                  <ion-icon name="cloud-download-outline"></ion-icon>
+                </ion-icon>
+              </span>
+              <span class="title">Booking</span>
+            </a>
+          </li>
+          <!--nav 1-->
+          <!--nav 2-->
+          <li>
+            <a href="{% url 'category' %}">
+              <span class="icon">
+                <ion-icon name="list-outline"></ion-icon>
+              </span>
+              <span class="title">Category</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'editorial' %}">
+              <span class="icon">
+                <ion-icon name="create-outline"></ion-icon>
+              </span>
+              <span class="title">Editorial</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'loan' %}">
+              <span class="icon">
+                <ion-icon name="cloud-download-outline"></ion-icon>
+              </span>
+              <span class="title">Loan</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="{% url 'setting' %}">
+              <span class="icon">
+                <ion-icon name="settings-outline"></ion-icon>
+              </span>
+              <span class="title">Setting</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <!--<li>
+                <a href="#">
+                  <span class="icon">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                  </span>
+                  <span class="title">Password</span>
+                </a>
+              </li>-->
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="log-out-outline"></ion-icon>
+              </span>
+              <span class="title">SigOut</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="help-outline"></ion-icon>
+              </span>
+              <span class="title">Help</span>
+            </a>
+          </li>
+          <!--nav 2-->
+          <!--nav 1-->
+        </ul>
+      </nav>
+
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+          </div>
+          <div class="search">
+            <label for="">
+              <input type="text" placeholder="search" />
+              <ion-icon name="search-outline"></ion-icon>
+            </label>
+          </div>
+          <div class="user">
+            <img src="{% static 'images/users/username-icon.svg'%}" alt="" />
+          </div>
+        </div>
+        <div class="cardBox">
+          <div class="card">
+            <div>
+              <div class="cardName">Books</div>
+              <div class="iconBox"></div>
+              <div class="number">150</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="cardName">Gender</div>
+              <div class="iconBox"></div>
+              <div class="number">150</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="cardName">Readers</div>
+              <div class="iconBox"></div>
+              <div class="number">150</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="cardName">Reviews</div>
+              <div class="iconBox"></div>
+              <div class="number">150</div>
+            </div>
+          </div>
+        </div>
+        <div class="details">
+          {% block details_content %} {% include details_template %} {% endblock
+          %}
+        </div>
+      </div>
+      <footer class="container__footer"></footer>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

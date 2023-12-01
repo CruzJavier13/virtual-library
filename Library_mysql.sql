@@ -4,7 +4,7 @@ USE db_library;
 
 CREATE TABLE tbl_user(
 num_user INT PRIMARY KEY AUTO_INCREMENT,
-user_card VARCHAR(12) NOT NULL,
+user_card VARCHAR(16) NOT NULL,
 first_name VARCHAR(80) NOT NULL,
 last_name VARCHAR(80) NOT NULL,
 address_user VARCHAR(255) NOT NULL,
@@ -87,7 +87,7 @@ num_login INT AUTO_INCREMENT PRIMARY KEY,
 num_user INT NOT NULL,
 name_user VARCHAR(16) NOT NULL,
 password_user VARCHAR(255) NOT NULL,
-date_login DATE NOT NULL,
+date_login DATE,
 last_date_login DATE,
 CONSTRAINT fk_auth_login_num_user FOREIGN KEY(num_user) REFERENCES tbl_user(num_user),
 CONSTRAINT uq_auth_login_num_user UNIQUE(num_user)
@@ -124,8 +124,29 @@ CONSTRAINT fk_rol_num FOREIGN KEY (num_rol) REFERENCES tbl_rol(num_rol),
 CONSTRAINT fk_num_resource FOREIGN KEY (num_resource) REFERENCES tbl_resource(num_resource),
 CONSTRAINT fk_num_action FOREIGN KEY (num_action) REFERENCES tbl_action(num_action)
 );
+CREATE TABLE tbl_availability(
+num_availability INT AUTO_INCREMENT PRIMARY KEY,
+num_book INT NOT NULL,
+amount INT NOT NULL,
+num_access INT NOT NULL,
+availability BOOLEAN,
+CONSTRAINT FOREIGN KEY (num_book) REFERENCES tbl_book(num_book),
+CONSTRAINT FOREIGN KEY (num_access) REFERENCES tbl_access(num_access),
+CONSTRAINT ch_num_access CHECK(num_access=1)
+);
+INSERT INTO tbl_access (access) VALUES ('Fisico'), ('Dijital');
 
+INSERT INTO tbl_user ( user_card, first_name, last_name , address_user, cell_phone, email_user) VALUES   
+                     ('udem', 'universidad','managua', 'Managua Belmonte', '+505 00000000', 'udem@edu.com.ni'),
+                     ('121247', 'Erick','Cruz', 'Managua Los Martinez', '+505 84259646', 'erickcroz2013@gmail.com'),
+                     ('181247', 'Alberto','Linarez', 'Masaya Las Rosas Casa#25', '+505 77240010', 'linarez@gmail.com');
+
+INSERT INTO tbl_auth_login (num_user, name_user, password_user) VALUES
+                           (1, 'admin', 'udem@2023'),
+                           (2, 'cruz121247', 'cruz@2023');
+SELECT * FROM tbl_auth_login;
 --drop database db_library;
 --USE db_library;
 --SHOW TABLES;
 --SELECT * FROM tbl_access;
+--SELECT * FROM tbl_user;
