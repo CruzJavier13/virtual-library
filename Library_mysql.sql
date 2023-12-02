@@ -40,7 +40,7 @@ num_book INT PRIMARY KEY AUTO_INCREMENT,
 title_book VARCHAR(40) NOT NULL,
 gender INT NOT NULL,
 author INT NOT NULL,
-edition_book CHAR(8) NOT NULL,
+edition_book CHAR(40) NOT NULL,
 publication_date DATE NOT NULL,
 editorial INT NOT NULL,
 descriptions NVARCHAR(255),
@@ -82,15 +82,16 @@ date_booking DATE NOT NULL,
 CONSTRAINT fk_booking_num_book FOREIGN KEY (num_book) REFERENCES tbl_book(num_book),
 CONSTRAINT fk_booking_num_user FOREIGN KEY (num_user) REFERENCES tbl_user(num_user)
 );
-CREATE TABLE tbl_auth_login(
+CREATE TABLE tbl_auth_user(
 num_login INT AUTO_INCREMENT PRIMARY KEY,
 num_user INT NOT NULL,
 name_user VARCHAR(16) NOT NULL,
-password_user VARCHAR(255) NOT NULL,
+`password` VARCHAR(255) NOT NULL,
 date_login DATE,
-last_date_login DATE,
+last_login DATE,
 CONSTRAINT fk_auth_login_num_user FOREIGN KEY(num_user) REFERENCES tbl_user(num_user),
-CONSTRAINT uq_auth_login_num_user UNIQUE(num_user)
+CONSTRAINT uq_auth_login_num_user UNIQUE(num_user),
+CONSTRAINT uq_name_user UNIQUE(name_user)
 );
 CREATE TABLE tbl_action(
 num_action INT AUTO_INCREMENT PRIMARY KEY,
@@ -141,12 +142,39 @@ INSERT INTO tbl_user ( user_card, first_name, last_name , address_user, cell_pho
                      ('121247', 'Erick','Cruz', 'Managua Los Martinez', '+505 84259646', 'erickcroz2013@gmail.com'),
                      ('181247', 'Alberto','Linarez', 'Masaya Las Rosas Casa#25', '+505 77240010', 'linarez@gmail.com');
 
-INSERT INTO tbl_auth_login (num_user, name_user, password_user) VALUES
-                           (1, 'admin', 'udem@2023'),
-                           (2, 'cruz121247', 'cruz@2023');
-SELECT * FROM tbl_auth_login;
+INSERT INTO tbl_auth_user (num_user, name_user, `password`) VALUES
+                          (1, 'admin', 'admin'),
+                          (2, '121247', '1234');
+SELECT * FROM tbl_auth_user;
+update tbl_auth_user set `password` = '1234'
+--DROP USER db_library@'%';
 --drop database db_library;
 --USE db_library;
 --SHOW TABLES;
 --SELECT * FROM tbl_access;
 --SELECT * FROM tbl_user;
+CREATE USER 'admin_library'@'%';
+GRANT USAGE ON db_library.* TO 'admin_library' IDENTIFIED BY 'udem';
+--GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON db_library.* TO admin_library IDENTIFIED BY 'udem';
+SELECT * FROM mysql.USER;
+--DROP USER 'library_user'@'%';
+-- Crea el usuario
+--CREATE USER 'db_library'@'%' IDENTIFIED BY '1234';
+--SHOW GRANTS FOR 'library_user'@'%';
+-- Otorga privilegios básicos
+--GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE  ON db_library.* TO 'library_user'@'%';
+--REVOKE
+-- Otorga privilegios para procedimientos almacenados
+--GRANT EXECUTE ON PROCEDURE db_library.* TO 'library_user'@'%';
+
+-- Otorga privilegios para funciones
+--GRANT EXECUTE ON FUNCTION db_library.* TO 'library_user'@'%';
+
+-- Otorga privilegios para vistas
+--GRANT SELECT ON db_library.* TO 'library_user'@'%';
+
+-- Otorga privilegios para triggers
+--GRANT TRIGGER ON db_library.* TO 'library_user'@'%';
+
+-- Refresca los privilegios
+--FLUSH PRIVILEGES;
