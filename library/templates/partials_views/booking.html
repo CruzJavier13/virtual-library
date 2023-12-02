@@ -3,6 +3,46 @@
 
 {% block details_content %}
         <div class="booking_container">
-            booking
+            <form action="#" method="post" class="form_container">
+                <input type="hidden" class="input_user" id="user_card" name="num_booking">
+                <label for="num_book" class="label_user">Num Book:</label>
+                <input type="text" class="input_user" id="num_book" name="num_book" required>
+        
+                <label for="num_user" class="label_user">Num User:</label>
+                <input type="text" class="input_user" id="num_user" name="num_user" required>
+        
+                <label for="date_booking" class="label_user">Date Booking:</label>
+                <input type="date" class="input_user" id="date_booking" name="date_booking" required>
+        
+                <button class="button_user" type="submit">Submit</button>
+            </form>
+            <div class="table_user booking">
+              <div class="table_user">
+                <h2 class="title-table">Booking</h2>
+              
+                <table class="table_data">
+                  <tr>
+                    <th>Num Booking</th>
+                    <th>Num Book</th>
+                    <th>Num User</th>
+                    <th>Date Booking</th>
+                    <th>
+                      Options
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>ABCD1234</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td class="btn-container">
+                      <input type="submit" name="Delete" value="" class="btn-delete">
+                      <input type="submit" name="Edit" value="" class="btn-edit">
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </table>
+              </div>
+            </div>
         </div>
 {% endblock %}

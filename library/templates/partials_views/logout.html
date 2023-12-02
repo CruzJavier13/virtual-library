@@ -3,6 +3,8 @@
 
 {% block details_content %}
         <div class="signout_container">
-            LogOut
+            {% if request.session.name_user %}
+            {{request.session.name_user}} &nbsp;&nbsp; <a href="{% url 'logout' %}">LogOut</a>
+            {% endif %}
         </div>
 {% endblock %}

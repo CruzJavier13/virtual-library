@@ -3,6 +3,34 @@
 
 {% block details_content %}
         <div class="Category_container">
-            category
+            <form action="#" method="post" class="form_container">
+                <input type="hidden" class="input_user" id="user_card" name="num_category">
+                <label for="gender" class="label_user">Gender:</label>
+                <input type="text" class="input_user" id="gender" name="gender" required>
+        
+                <button class="button_user" type="submit">Submit</button>
+            </form>
+            <div class="table_user category">
+              <div class="table_user">
+                <h2 class="title-table">Category Book</h2>
+              
+                <table class="table_data category">
+                  <tr>
+                    <th>Num Category</th>
+                    <th>Gender</th>
+                    <th>Option</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>History</td>
+                    <td class="btn-group">
+                      <input type="submit" class="btn-delete" name="delete" value="Delete">
+                      <input type="submit" class="btn-edit" name="edit" value="Edit">
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </table>
+              </div>
+            </div>
         </div>
 {% endblock %}

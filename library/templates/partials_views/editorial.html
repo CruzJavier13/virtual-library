@@ -3,6 +3,49 @@
 
 {% block details_content %}
         <div class="editorial_container">
-            editorial
+            <form action="#" method="post" class="form_container">
+              <input type="hidden" class="input_user"  name="num_editorial">
+                <label for="name_editorial" class="label_user">Name Editorial:</label>
+                <input type="text" class="input_user" id="name_editorial" name="name_editorial" required>
+        
+                <label for="address_editorial" class="label_user">Address Editorial:</label>
+                <input type="text" class="input_user" id="address_editorial" name="address_editorial" required>
+        
+                <label for="email_editorial" class="label_user">Email Editorial:</label>
+                <input type="email" class="input_user" id="email_editorial" name="email_editorial" required>
+        
+                <label for="phone_number" class="label_user">Phone Number:</label>
+                <input type="text" class="input_user" id="phone_number" name="phone_number" required>
+        
+                <button class="button_user" type="submit">Submit</button>
+            </form>
+            <div class="table_user">
+              <div class="table_user">
+                <h2 class="title-table">Editorial</h2>
+              
+                <table class="table_data">
+                  <tr>
+                    <th>Num Editorial</th>
+                    <th>Name Editorial</th>
+                    <th>Address Editorial</th>
+                    <th>Email Editorial</th>
+                    <th>Phone Number</th>
+                    <th>Option</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>ABCD1234</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>123 Main St</td>
+                    <td class="btn-group">
+                      <input type="submit" name="delete" value="Delete" class="btn-delete">
+                      <input type="submit" name="edit" value="Edit" class="btn-edit">
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </table>
+              </div>
+            </div>
         </div>
 {% endblock %}

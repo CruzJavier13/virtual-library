@@ -3,6 +3,64 @@
 
 {% block details_content %}
         <div class="book_container">
-            book
+            <form action="#" method="post" class="form_container">
+                <input type="hidden"  id="user_card" name="num_book" value="">
+                <label for="user_card" class="label_user">Title Book:</label>
+                <input type="text" class="input_user" id="user_card" name="user_card" required>
+        
+                <label for="first_name" class="label_user">Gender:</label>
+                <input type="text" class="input_user" id="first_name" name="first_name" required>
+        
+                <label for="last_name" class="label_user">Author:</label>
+                <input type="text" class="input_user" id="last_name" name="last_name" required>
+        
+                <label for="address_user" class="label_user">Edition:</label>
+                <input type="text" class="input_user" id="address_user" name="address_user" required>
+        
+                <label for="cell_phone" class="label_user">Date Publication:</label>
+                <input type="date" class="input_user" id="cell_phone" name="cell_phone" required>
+        
+                <label for="email_user" class="label_user">Editorial:</label>
+                <input type="text" class="input_user" id="email_user" name="email_user" required>
+              
+                <label for="email_user" class="label_user">Description:</label>
+                <input type="text" class="input_user" id="email_user" name="email_user" required>
+
+                <button class="button_user" type="submit">Submit</button>
+            </form>
+            <div class="table_user">
+              <div class="table_user">
+                <h2 class="title-table">Books</h2>
+              
+                <table class="table_data">
+                  <tr>
+                    <th>Num Book</th>
+                    <th>Title</th>
+                    <th>Gender</th>
+                    <th>Author</th>
+                    <th>Edition</th>
+                    <th>Date Publ</th>
+                    <th>Editorial</th>
+                    <th>Description</th>
+                    <th>Option</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>El principito</td>
+                    <td>History</td>
+                    <td>xxxx</td>
+                    <td>1 Ed</td>
+                    <td>Vida</td>
+                    <td>24-10-2001</td>
+                    <td>Libro infantil</td>
+                    <td class="btn-group">
+                      <input type="submit" name="delete" value="Delete" class="btn-delete">
+                      <input type="submit" name="edit" value="Edit" class="btn-edit">
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </table>
+              </div>
+            </div>
         </div>
 {% endblock %}

@@ -1,28 +1,37 @@
-from django.shortcuts import render
-from .models import TblUser
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password
 from .models import TblAuthUser
 
 # Create your views here.
-def login(request):
+
+def view_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+        try:
+            user = TblAuthUser.objects.get(name_user=username)
+        except TblAuthUser.DoesNotExist:
+            # Usuario no encontrado
+            return render(request, 'registration/login.html', {'error_message': 'Usuario no encontrado'})
 
-        if user is not None:
-            login(request, user)
-            messages.success(request, f'Welcome, {user.username}!')
+        # Verificar la contraseña
+        print(check_password(password, user.password))
+        print(password == user.password)
+        if password == user.password:
             return redirect('home')
         else:
-            messages.error(request, 'Invalid username or password.')
-
+            # Contraseña incorrecta
+            return render(request, 'registration/login.html', {'error_message': 'Contraseña incorrecta'})
     return render(request, 'registration/login.html')
 
-@login_required
+def logout(request):
+    try:
+        del request.session['num_user']
+    except:
+        return render(request, 'registration/login.html')
+    return render(request, 'registration/login.html')
+
 def home(request):
     return render(request, 'partials_views/index.html')
 

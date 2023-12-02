@@ -3,6 +3,54 @@
 
 {% block details_content %}
         <div class="author_container">
-            author
+          <form action="#" method="post" class="form_container">
+            <input type="hidden" class="input_user" id="num_autor" name="num_author">
+            <label for="first_name" class="label_user">First Name:</label>
+            <input type="text" class="input_user" id="first_name" name="first_name" required>
+    
+            <label for="last_name" class="label_user">Last Name:</label>
+            <input type="text" class="input_user" id="last_name" name="last_name" required>
+    
+            <label for="birthdate" class="label_user">Birthdate:</label>
+            <input type="date" class="input_user" id="birthdate" name="birthdate" required>
+    
+            <label for="nationality" class="label_user">Nationality:</label>
+            <input type="text" class="input_user" id="nationality" name="nationality" required>
+    
+            <label for="gender_author" class="label_user">Gender Author:</label>
+            <input type="text" class="input_user" id="gender_author" name="gender_author" required>
+    
+            <button class="button_user" type="submit">Submit</button>
+        </form>
+        <div class="table_user">
+          <div class="table_user">
+            <h2 class="title-table">Author</h2>
+          
+            <table class="table_data">
+              <tr>
+                <th>Num Author</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>BirthDate</th>
+                <th>Nationality</th>
+                <th>Gender Author</th>
+                <th>Option</th>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Elisa</td>
+                <td>Villanueva</td>
+                <td>22-02-1990</td>
+                <td>EE UU</td>
+                <td>M</td>
+                <td class="btn-group">
+                  <input type="submit" name="delete" value="Delete" class="btn-delete">
+                  <input type="submit" name="edit" value="Edit" class="btn-edit">
+                </td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </table>
+          </div>
+        </div>
         </div>
 {% endblock %}

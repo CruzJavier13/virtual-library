@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.urls import reverse_lazy
 import pymysql
 pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -73,7 +74,7 @@ DATABASES = {
         'PORT': '3306',  # Puerto de MySQL por defecto
     }
 }
-
+AUTH_USER_MODEL = 'library.TblAuthUser'
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -114,3 +115,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'home/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'

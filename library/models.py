@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class TblAccess(models.Model):
     num_access = models.AutoField(primary_key=True)
@@ -35,14 +35,43 @@ class TblAuth(models.Model):
         managed = False
         db_table = 'tbl_auth'
 
+class TblAuthUserManager(BaseUserManager):
+    def create_user(self, num_user, name_user, password=None, **extra_fields):
+        if not num_user:
+            raise ValueError('El campo "num_user" debe ser establecido.')
+        user = self.model(num_user=num_user, name_user=name_user, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-class TblAuthUser(models.Model):
+    def create_superuser(self, num_user, name_user, password_user=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(num_user, name_user, password_user, **extra_fields)
+
+class TblAuthUser(AbstractBaseUser):
     num_login = models.AutoField(primary_key=True)
     num_user = models.OneToOneField('TblUser', models.DO_NOTHING, db_column='num_user')
-    name_user = models.CharField(max_length=16)
-    password_user = models.CharField(max_length=255)
+    name_user = models.CharField(max_length=16, unique=True)
+    password = models.CharField(max_length=255)
     date_login = models.DateField(blank=True, null=True)
-    last_date_login = models.DateField(blank=True, null=True)
+    last_login = models.DateField(blank=True, null=True)
+
+    objects = TblAuthUserManager()
+
+    USERNAME_FIELD = 'name_user'
+    REQUIRED_FIELDS = ['num_user']
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    def get_username(self):
+        return self.name_user
 
     class Meta:
         managed = False
